@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}My images{% endblock %}
+{% block content %}
+    <table class="table justify-content-center">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price, RUB</th>
+                <th scope="col">Speed, km/h</th>
+                <th scope="col">Year</th>
+                <th class="text-center" scope="col">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in records %}
+                <tr class="justify-content-center">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <th>{{ r.name }}</th>
+                    <th>{{ r.price }}</th>
+                    <th>{{ r.max_speed }}</th>
+                    <th>{{ r.year }}</th>
+                    <th class="text-center"><img style="max-width: 45%" class="img-center" src="{{ r.image.url }}" alt="lalal"></th>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="h5 text-left"><em><a href="{% url 'add_post' %}">Add record</a></em></p>
+
+{% endblock %}
